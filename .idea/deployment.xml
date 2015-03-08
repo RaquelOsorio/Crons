@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData">
+    <serverData>
+      <paths name="produccion">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/Crons" local="$PROJECT_DIR$" web="Cron" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+

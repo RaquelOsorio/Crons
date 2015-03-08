@@ -1,0 +1,15 @@
+{% extends 'index2.html' %}
+<section class='contenido'>
+{% block contenido %}
+    <div id="body">
+        <h3>Modificar Cron </h3>
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		{{formulario.as_p}}
+		<p><input name="Aceptar" style="margin-left: 150px;" class="formbutton" value="Aceptar" type="submit" />
+         <a class="button" href="/"> Cancelar </a>
+
+        </p>
+	</form>
+</div>
+{% endblock %}
+</section>

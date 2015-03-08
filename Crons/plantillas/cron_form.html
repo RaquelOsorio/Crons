@@ -1,0 +1,15 @@
+{% extends 'index2.html' %}
+<section class='contenido'>
+{% block contenido %}
+ <div id="body">
+ <p></p>
+        <h3>Crear Tarea </h3>
+		<form id='formulario' method='post' action=''>{% csrf_token %}
+		<table>{{formulario}}</table>
+        <p>
+            <input name="Guardar"  class="formbutton" value="Guardar" type="submit" />
+        </p>
+	</form>
+ </div>
+{% endblock %}
+</section>

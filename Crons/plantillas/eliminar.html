@@ -1,0 +1,12 @@
+{% extends 'index2.html' %}
+
+ <section class='contenido'>
+{% block contenido %}
+    <div id="body">
+
+        <p>Esta seguro que desea eliminar la regla: "{{ cron.nombre }}"</p>
+        <a class="button" href="/eliCron/{{ cron.id }}"><i class="button"></i> SI </a>
+        <a class="button" href="/"><i class="button"></i> NO </a>
+    </div>
+{% endblock %}
+</section>
