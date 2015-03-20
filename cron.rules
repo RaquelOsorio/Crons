@@ -2,9 +2,9 @@ import org.openhab.core.library.types.*
 import org.openhab.core.library.items.*
 import org.openhab.model.script.actions.*
     
-rule 'Prender-Sala de Juegos-20:32:00'
+rule 'Prender-Sala de Juegos-01:36:00'
 when
-    Time cron "32 20 * * 6"
+    Time cron "36 1 * * sun,mon,tue,wed,thu,fri,sat"
 then
     sendCommand(Sala de Juegos, 'Prender')
 end

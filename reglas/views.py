@@ -89,14 +89,29 @@ end
 |  |  |  |  .---- dia de la semana (0 - 6) (Domingo=0) )
 |  |  |  |  |
 *  *  *  *  * """
+
     for c in crons:
         cont=0
         for d in c.dia:
+            if d=='0':
+                aux="sun"
+            if d== '1':
+                aux="mon"
+            if d== '2':
+                aux= "tue"
+            if d== '3':
+                aux='wed'
+            if d== '4':
+                aux='thu'
+            if d== '5':
+                aux='fri'
+            if d== '6':
+                aux='sat'
             if cont==0:
-                dias= str(d)
+                dias= aux
                 cont=cont+1
             else:
-                dias=dias + "," + str(d)
+                dias=dias + "," + aux
         exp=  str(c.hora.minute) + " " + str(c.hora.hour) + " * * " + dias
 
         buffr += template % (c.nombre, exp, c.dispositivo, c.accion)
