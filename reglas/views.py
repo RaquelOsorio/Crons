@@ -3,6 +3,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, render
 from reglas.models import Crons
 from reglas.forms import CronsForm
+
+from reglas.forms import CronsFormulario
 from django.conf import settings
 
 
@@ -22,7 +24,7 @@ def registrarCron(request):
             formulario.save()
             cron= formulario.instance.id
             c=Crons.objects.get(pk=cron)
-            c.nombre= c.accion + " " + c.dispositivo
+            c.nombre= c.accion + "-" + c.dispositivo + "-" + str(c.hora)
             c.save()
             generateCronRulesFile('./cron.rules')
             return HttpResponseRedirect('/')
@@ -30,7 +32,7 @@ def registrarCron(request):
     else:
         formulario=CronsForm()
 
-    return render(request, 'cron_form.html', {'formulario': formulario,})
+    return render(request, 'cron_form.html', {'form': formulario,})
 
 
 def editarCrons(request, codigo):
@@ -42,14 +44,14 @@ def editarCrons(request, codigo):
             formulario.save()
             cron= formulario.instance.id
             c=Crons.objects.get(pk=cron)
-            c.nombre= c.accion + " " + c.dispositivo
+            c.nombre= c.accion + "-" + c.dispositivo + "-" + str(c.hora)
             c.save()
 
             generateCronRulesFile('./cron.rules')
             return HttpResponseRedirect('/')
     else:
-        formulario=CronsForm(instance = crons)
-    return render(request,'modificarCron.html', {'formulario': formulario})
+        formulario=CronsFormulario(instance = crons)
+    return render(request,'modificarCron.html', {'form': formulario})
 
 def eliminarCron(request, codigo):
 
@@ -67,16 +69,16 @@ def eliCron(request, codigo):
 def generateCronRulesFile(path):
     crons= Crons.objects.all()
     buffr = '''import org.openhab.core.library.types.*
-    import org.openhab.core.library.items.*
-    import org.openhab.model.script.actions.*
+import org.openhab.core.library.items.*
+import org.openhab.model.script.actions.*
     '''
     template = '''
-    rule '%s'
-    when
-        Time cron %s
-    then
-        sendCommand('%s', '%s')
-    end
+rule '%s'
+when
+    Time cron "%s"
+then
+    sendCommand(%s, '%s')
+end
     '''
     """
     Formato de Expresion Cron

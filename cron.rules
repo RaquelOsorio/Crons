@@ -1,32 +1,11 @@
 import org.openhab.core.library.types.*
-    import org.openhab.core.library.items.*
-    import org.openhab.model.script.actions.*
+import org.openhab.core.library.items.*
+import org.openhab.model.script.actions.*
     
-    rule 'Prender Computadora'
-    when
-        Time cron 59 21 * * 0,1,2,3,4,5,6
-    then
-        sendCommand('Computadora', 'Prender')
-    end
-    
-    rule 'Apagar Radio'
-    when
-        Time cron 0 0 * * 1,2
-    then
-        sendCommand('Radio', 'Apagar')
-    end
-    
-    rule 'Prender Radio'
-    when
-        Time cron 0 14 * * 2
-    then
-        sendCommand('Radio', 'Prender')
-    end
-    
-    rule 'Apagar Tele'
-    when
-        Time cron 0 23 * * 0,2
-    then
-        sendCommand('Tele', 'Apagar')
-    end
+rule 'Prender-Sala de Juegos-20:32:00'
+when
+    Time cron "32 20 * * 6"
+then
+    sendCommand(Sala de Juegos, 'Prender')
+end
     

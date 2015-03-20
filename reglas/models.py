@@ -113,23 +113,37 @@ class Crons(models.Model):
         ('VIER','Viernes')
     )
     Dispositivo_CHOICES=(
-        ('Tele','Televisor'),
-        ('Radio','Radio'),
-        ('Computadora','Computadora'),
+        ('Sala de Juegos','Sala de Juegos'),
+        ('Garage','Garage'),
+        ('Oficina','Oficina'),
+        ('Honguitos','Honguitos'),
+        ('Patio','Patio'),
+        ('Piscina','Piscina'),
+        ('Sala Exterior','Sala Exterior'),
+        ('Sala Central','Sala Central'),
+        ('Sala Doble','Sala Doble'),
+        ('Matrimonial','Matrimonial'),
+        ('Frente','Frente'),
+        ('Entrada Arriba','Entrada Arriba'),
+        ('Entrada','Entrada'),
+        ('Entrada Escalera','Entrada Escalera'),
+        ('Pared Quincho','Pared Quincho'),
+        ('Techo Quincho','Techo Quincho'),
 
     )
     nombre = models.CharField(max_length=32, unique=False, blank=False)
     accion = models.CharField(max_length=20,
                               choices=ACCION_CHOICES,
                               default='')
+    dispositivo = models.CharField(max_length=20,
+                             choices=Dispositivo_CHOICES,
+                            default='')
 
     dia = MultiSelectField(max_length=250, blank=False, choices=DIAS)
 #    dia = models.CharField(max_length=20,
 #                              choices=DIA_CHOICES,
 #                             default='')
-    dispositivo = models.CharField(max_length=20,
-                             choices=Dispositivo_CHOICES,
-                            default='')
+
     hora= models.TimeField()
     def __unicode__(self):
         return self.nombre

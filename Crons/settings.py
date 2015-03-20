@@ -127,6 +127,8 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+
+    'bootstrap3_datetime',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -135,7 +137,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'datetimewidget',
     'reglas',
+
 )
 
 # A sample logging configuration. The only tangible logging

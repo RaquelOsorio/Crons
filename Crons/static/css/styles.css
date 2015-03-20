@@ -89,7 +89,7 @@ a:focus {
 }
 
 
-a.button {
+a.buttonn {
     background-color: #799AC0;
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
@@ -101,7 +101,7 @@ a.button {
     text-transform: uppercase;
 }
 
-a.button:hover {
+a.buttonn:hover {
 	background-color: #4076AB;
 }
 
@@ -139,7 +139,7 @@ form input, form select, form textarea {
 	font-size: 13px;
 }
 
-form input.formbutton {
+form input.formbuttonn {
    background-color: #799AC0;
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
