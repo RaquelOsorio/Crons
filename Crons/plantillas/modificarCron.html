@@ -1,32 +1,15 @@
 {% extends 'index2.html' %}
 <section class='contenido'>
 {% block contenido %}
- <div id="body">
- <p></p>
-        <h3>Modificar Tarea </h3>
-<form method="post" role="form">
-            {% for field in form.visible_fields %}
-            <div id="div_{{ field.html_name }}"
-                 class="form-group{% if field.errors %} has-error{% endif %}">
-                {{ field.label_tag }}
-                {{ field }}
-                <div class="text-muted pull-right">
-                    <small>{{ field.help_text }}</small>
-                </div>
-                <div class="help-block">
-                    {{ field.errors }}
-                </div>
-            </div>
-            {% endfor %}
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
-            {% csrf_token %}
-            <div class="form-group">
-                <input type="submit" value="aceptar" class="btn btn-primary" />
-                <a class="btn btn-primary" href="/"> Cancelar </a>
-            </div>
-        </form>
- </div>
+    <div id="body">
+        <h3>Modificar Cron </h3>
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		{{formulario.as_p}}
+		<p><input name="Aceptar" style="margin-left: 150px;" class="formbutton" value="Aceptar" type="submit" />
+         <a class="button" href="/"> Cancelar </a>
+
+        </p>
+	</form>
+</div>
 {% endblock %}
 </section>

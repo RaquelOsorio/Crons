@@ -144,6 +144,6 @@ class Crons(models.Model):
 #                              choices=DIA_CHOICES,
 #                             default='')
 
-    hora= models.TimeField()
+    hora= models.TimeField(null=True)
     def __unicode__(self):
         return self.nombre

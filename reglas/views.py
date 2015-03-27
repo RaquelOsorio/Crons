@@ -38,6 +38,7 @@ def registrarCron(request):
 def editarCrons(request, codigo):
 
     crons=Crons.objects.get(pk=codigo)
+    hora=crons.hora
     if request.method == "POST":
         formulario = CronsForm(request.POST, request.FILES, instance = crons)
         if formulario.is_valid():
@@ -51,7 +52,7 @@ def editarCrons(request, codigo):
             return HttpResponseRedirect('/')
     else:
         formulario=CronsFormulario(instance = crons)
-    return render(request,'modificarCron.html', {'form': formulario})
+    return render(request,'modificarCron.html', {'formulario': formulario})
 
 def eliminarCron(request, codigo):
 
@@ -73,11 +74,11 @@ import org.openhab.core.library.items.*
 import org.openhab.model.script.actions.*
     '''
     template = '''
-rule '%s'
+rule "%s"
 when
     Time cron "%s"
 then
-    sendCommand(%s, '%s')
+    sendCommand(Casa, '%s %s')
 end
     '''
     """
@@ -94,27 +95,27 @@ end
         cont=0
         for d in c.dia:
             if d=='0':
-                aux="sun"
+                aux="SUN"
             if d== '1':
-                aux="mon"
+                aux="MON"
             if d== '2':
-                aux= "tue"
+                aux= "TUE"
             if d== '3':
-                aux='wed'
+                aux='WED'
             if d== '4':
-                aux='thu'
+                aux='THU'
             if d== '5':
-                aux='fri'
+                aux='FRI'
             if d== '6':
-                aux='sat'
+                aux='SAT'
             if cont==0:
                 dias= aux
                 cont=cont+1
             else:
                 dias=dias + "," + aux
-        exp=  str(c.hora.minute) + " " + str(c.hora.hour) + " * * " + dias
+        exp=  "0 " + str(c.hora.minute) + " " + str(c.hora.hour) + " ? * " + dias
 
-        buffr += template % (c.nombre, exp, c.dispositivo, c.accion)
+        buffr += template % (c.nombre, exp, c.accion, c.dispositivo)
     with open(path, 'w') as f:
         f.write(buffr)
 

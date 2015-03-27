@@ -26,8 +26,9 @@ class CronsFormulario(forms.ModelForm):
         model= Crons
         exclude = ['nombre']
         widgets = {
-            'hora' : DateTimePicker(options={"icons":'glyphicon glyphicon-time',"format": "HH:mm","pickDate": False, "viewMode":'time', "showClose":'true'})
+            'hora' : DateTimePicker(options={"format": "HH:mm","viewMode":'time', "showClose":'false'})
         }
+
         #widgets = {
         #    'hora' : forms.DateTimeField(required=False, widget=DateTimePicker(options={"format": "HH:mm","pickDate": False}))
         #}

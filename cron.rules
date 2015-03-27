@@ -2,10 +2,17 @@ import org.openhab.core.library.types.*
 import org.openhab.core.library.items.*
 import org.openhab.model.script.actions.*
     
-rule 'Prender-Sala de Juegos-01:36:00'
+rule "Prender-Sala de Juegos-23:23:00"
 when
-    Time cron "36 1 * * sun,mon,tue,wed,thu,fri,sat"
+    Time cron "0 23 23 ? * WED"
 then
-    sendCommand(Sala de Juegos, 'Prender')
+    sendCommand(Casa, 'Prender Sala de Juegos')
+end
+    
+rule "Prender-Sala de Juegos-20:30:00"
+when
+    Time cron "0 30 20 ? * MON"
+then
+    sendCommand(Casa, 'Prender Sala de Juegos')
 end
     
